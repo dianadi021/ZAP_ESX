@@ -16,10 +16,12 @@
 
 
 -- Dumping database structure for skuadcity
+DROP DATABASE IF EXISTS `skuadcity`;
 CREATE DATABASE IF NOT EXISTS `skuadcity` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */;
 USE `skuadcity`;
 
 -- Dumping structure for table skuadcity.accounts
+DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE IF NOT EXISTS `accounts` (
   `name` varchar(255) NOT NULL,
   `owner` varchar(64) DEFAULT NULL,
@@ -30,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 -- Dumping data for table skuadcity.accounts: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.addon_account
+DROP TABLE IF EXISTS `addon_account`;
 CREATE TABLE IF NOT EXISTS `addon_account` (
   `name` varchar(60) NOT NULL,
   `label` varchar(100) NOT NULL,
@@ -38,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `addon_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.addon_account: ~10 rows (approximately)
-INSERT IGNORE INTO `addon_account` (`name`, `label`, `shared`) VALUES
+REPLACE INTO `addon_account` (`name`, `label`, `shared`) VALUES
 	('bank_savings', 'Bank Savings', 0),
 	('caution', 'caution', 0),
 	('property_black_money', 'Dirty Money Property', 0),
@@ -51,6 +54,7 @@ INSERT IGNORE INTO `addon_account` (`name`, `label`, `shared`) VALUES
 	('society_taxi', 'Taxi', 1);
 
 -- Dumping structure for table skuadcity.addon_account_data
+DROP TABLE IF EXISTS `addon_account_data`;
 CREATE TABLE IF NOT EXISTS `addon_account_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_name` varchar(100) DEFAULT NULL,
@@ -62,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `addon_account_data` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.addon_account_data: ~7 rows (approximately)
-INSERT IGNORE INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
+REPLACE INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`) VALUES
 	(1, 'society_cardealer', 0, NULL),
 	(2, 'society_police', 0, NULL),
 	(3, 'society_ambulance', 0, NULL),
@@ -72,6 +76,7 @@ INSERT IGNORE INTO `addon_account_data` (`id`, `account_name`, `money`, `owner`)
 	(7, 'society_realestateagent', 0, NULL);
 
 -- Dumping structure for table skuadcity.addon_inventory
+DROP TABLE IF EXISTS `addon_inventory`;
 CREATE TABLE IF NOT EXISTS `addon_inventory` (
   `name` varchar(60) NOT NULL,
   `label` varchar(100) NOT NULL,
@@ -80,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `addon_inventory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.addon_inventory: ~6 rows (approximately)
-INSERT IGNORE INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
+REPLACE INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 	('property', 'Property', 0),
 	('society_ambulance', 'EMS', 1),
 	('society_cardealer', 'Cardealer', 1),
@@ -89,6 +94,7 @@ INSERT IGNORE INTO `addon_inventory` (`name`, `label`, `shared`) VALUES
 	('society_taxi', 'Taxi', 1);
 
 -- Dumping structure for table skuadcity.addon_inventory_items
+DROP TABLE IF EXISTS `addon_inventory_items`;
 CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `inventory_name` varchar(100) NOT NULL,
@@ -104,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `addon_inventory_items` (
 -- Dumping data for table skuadcity.addon_inventory_items: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.billing
+DROP TABLE IF EXISTS `billing`;
 CREATE TABLE IF NOT EXISTS `billing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(60) NOT NULL,
@@ -119,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `billing` (
 -- Dumping data for table skuadcity.billing: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.cardealer_vehicles
+DROP TABLE IF EXISTS `cardealer_vehicles`;
 CREATE TABLE IF NOT EXISTS `cardealer_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `vehicle` varchar(255) NOT NULL,
@@ -129,6 +137,7 @@ CREATE TABLE IF NOT EXISTS `cardealer_vehicles` (
 -- Dumping data for table skuadcity.cardealer_vehicles: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.datastore
+DROP TABLE IF EXISTS `datastore`;
 CREATE TABLE IF NOT EXISTS `datastore` (
   `name` varchar(60) NOT NULL,
   `label` varchar(100) NOT NULL,
@@ -137,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `datastore` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.datastore: ~9 rows (approximately)
-INSERT IGNORE INTO `datastore` (`name`, `label`, `shared`) VALUES
+REPLACE INTO `datastore` (`name`, `label`, `shared`) VALUES
 	('property', 'Property', 0),
 	('society_ambulance', 'EMS', 1),
 	('society_mechanic', 'Mechanic', 1),
@@ -149,6 +158,7 @@ INSERT IGNORE INTO `datastore` (`name`, `label`, `shared`) VALUES
 	('user_mask', 'Mask', 0);
 
 -- Dumping structure for table skuadcity.datastores
+DROP TABLE IF EXISTS `datastores`;
 CREATE TABLE IF NOT EXISTS `datastores` (
   `name` varchar(255) NOT NULL,
   `owner` varchar(64) DEFAULT NULL,
@@ -160,6 +170,7 @@ CREATE TABLE IF NOT EXISTS `datastores` (
 -- Dumping data for table skuadcity.datastores: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.datastore_data
+DROP TABLE IF EXISTS `datastore_data`;
 CREATE TABLE IF NOT EXISTS `datastore_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
@@ -171,13 +182,14 @@ CREATE TABLE IF NOT EXISTS `datastore_data` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.datastore_data: ~4 rows (approximately)
-INSERT IGNORE INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
+REPLACE INTO `datastore_data` (`id`, `name`, `owner`, `data`) VALUES
 	(1, 'society_police', NULL, '{}'),
 	(2, 'society_ambulance', NULL, '{}'),
 	(3, 'society_mechanic', NULL, '{}'),
 	(4, 'society_taxi', NULL, '{}');
 
 -- Dumping structure for table skuadcity.fine_types
+DROP TABLE IF EXISTS `fine_types`;
 CREATE TABLE IF NOT EXISTS `fine_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) DEFAULT NULL,
@@ -187,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `fine_types` (
 ) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.fine_types: ~52 rows (approximately)
-INSERT IGNORE INTO `fine_types` (`id`, `label`, `amount`, `category`) VALUES
+REPLACE INTO `fine_types` (`id`, `label`, `amount`, `category`) VALUES
 	(53, 'Misuse of a horn', 30, 0),
 	(54, 'Illegally Crossing a continuous Line', 40, 0),
 	(55, 'Driving on the wrong side of the road', 250, 0),
@@ -242,6 +254,7 @@ INSERT IGNORE INTO `fine_types` (`id`, `label`, `amount`, `category`) VALUES
 	(104, 'Fraud', 2000, 2);
 
 -- Dumping structure for table skuadcity.inventories
+DROP TABLE IF EXISTS `inventories`;
 CREATE TABLE IF NOT EXISTS `inventories` (
   `name` varchar(255) NOT NULL,
   `owner` varchar(64) DEFAULT NULL,
@@ -251,10 +264,11 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.inventories: ~1 rows (approximately)
-INSERT IGNORE INTO `inventories` (`name`, `owner`, `items`) VALUES
+REPLACE INTO `inventories` (`name`, `owner`, `items`) VALUES
 	('test', NULL, '"something"');
 
 -- Dumping structure for table skuadcity.items
+DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
   `name` varchar(64) NOT NULL,
   `label` varchar(64) NOT NULL,
@@ -265,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.items: ~33 rows (approximately)
-INSERT IGNORE INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
+REPLACE INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 	('alive_chicken', 'Living chicken', 1, 0, 1),
 	('bandage', 'Bandage', 2, 0, 1),
 	('beer', 'Beer', 1, 0, 0),
@@ -301,6 +315,7 @@ INSERT IGNORE INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VAL
 	('wool', 'Wool', 1, 0, 1);
 
 -- Dumping structure for table skuadcity.jobs
+DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
   `name` varchar(64) NOT NULL,
   `label` varchar(64) DEFAULT NULL,
@@ -309,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.jobs: ~15 rows (approximately)
-INSERT IGNORE INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
+REPLACE INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 	('ambulance', 'EMS', 0),
 	('banker', 'Banker', 0),
 	('cardealer', 'Cardealer', 0),
@@ -327,6 +342,7 @@ INSERT IGNORE INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 	('unemployed', 'Unemployed', 0);
 
 -- Dumping structure for table skuadcity.job_grades
+DROP TABLE IF EXISTS `job_grades`;
 CREATE TABLE IF NOT EXISTS `job_grades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `job_name` varchar(32) DEFAULT NULL,
@@ -342,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `job_grades` (
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.job_grades: ~40 rows (approximately)
-INSERT IGNORE INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
+REPLACE INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
 	(1, 'unemployed', 0, 'unemployed', 'Unemployed', 200, '{}', '{}'),
 	(2, 'ambulance', 0, 'ambulance', 'Paramedic', 20, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
 	(3, 'ambulance', 1, 'doctor', 'Doctor', 40, '{"tshirt_2":0,"hair_color_1":5,"glasses_2":3,"shoes":9,"torso_2":3,"hair_color_2":0,"pants_1":24,"glasses_1":4,"hair_1":2,"sex":0,"decals_2":0,"tshirt_1":15,"helmet_1":8,"helmet_2":0,"arms":92,"face":19,"decals_1":60,"torso_1":13,"hair_2":0,"skin":34,"pants_2":5}', '{"tshirt_2":3,"decals_2":0,"glasses":0,"hair_1":2,"torso_1":73,"shoes":1,"hair_color_2":0,"glasses_1":19,"skin":13,"face":6,"pants_2":5,"tshirt_1":75,"pants_1":37,"helmet_1":57,"torso_2":0,"arms":14,"sex":1,"glasses_2":0,"decals_1":0,"hair_2":0,"helmet_2":0,"hair_color_1":0}'),
@@ -385,6 +401,7 @@ INSERT IGNORE INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `sa
 	(40, 'cardealer', 3, 'boss', 'Boss', 0, '{}', '{}');
 
 -- Dumping structure for table skuadcity.licenses
+DROP TABLE IF EXISTS `licenses`;
 CREATE TABLE IF NOT EXISTS `licenses` (
   `type` varchar(60) NOT NULL,
   `label` varchar(60) NOT NULL,
@@ -392,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `licenses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.licenses: ~7 rows (approximately)
-INSERT IGNORE INTO `licenses` (`type`, `label`) VALUES
+REPLACE INTO `licenses` (`type`, `label`) VALUES
 	('boat', 'Boat License'),
 	('dmv', 'Traffic Laws'),
 	('drive', 'Drivers license'),
@@ -402,6 +419,7 @@ INSERT IGNORE INTO `licenses` (`type`, `label`) VALUES
 	('weed_processing', 'Weed Processing License');
 
 -- Dumping structure for table skuadcity.migrations
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(64) DEFAULT NULL,
@@ -410,11 +428,12 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.migrations: ~2 rows (approximately)
-INSERT IGNORE INTO `migrations` (`id`, `module`, `last`) VALUES
+REPLACE INTO `migrations` (`id`, `module`, `last`) VALUES
 	(1, 'skin', 0),
 	(2, 'society', 0);
 
 -- Dumping structure for table skuadcity.owned_properties
+DROP TABLE IF EXISTS `owned_properties`;
 CREATE TABLE IF NOT EXISTS `owned_properties` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -428,6 +447,7 @@ CREATE TABLE IF NOT EXISTS `owned_properties` (
 -- Dumping data for table skuadcity.owned_properties: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.owned_vehicles
+DROP TABLE IF EXISTS `owned_vehicles`;
 CREATE TABLE IF NOT EXISTS `owned_vehicles` (
   `owner` varchar(60) NOT NULL,
   `plate` varchar(12) NOT NULL,
@@ -441,7 +461,65 @@ CREATE TABLE IF NOT EXISTS `owned_vehicles` (
 
 -- Dumping data for table skuadcity.owned_vehicles: ~0 rows (approximately)
 
+-- Dumping structure for table skuadcity.phone_app_chat
+DROP TABLE IF EXISTS `phone_app_chat`;
+CREATE TABLE IF NOT EXISTS `phone_app_chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `channel` varchar(20) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- Dumping data for table skuadcity.phone_app_chat: ~0 rows (approximately)
+
+-- Dumping structure for table skuadcity.phone_calls
+DROP TABLE IF EXISTS `phone_calls`;
+CREATE TABLE IF NOT EXISTS `phone_calls` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `owner` varchar(10) NOT NULL COMMENT 'Num tel proprio',
+  `num` varchar(10) NOT NULL COMMENT 'Num reférence du contact',
+  `incoming` int(11) NOT NULL COMMENT 'Défini si on est à l''origine de l''appels',
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `accepts` int(11) NOT NULL COMMENT 'Appels accepter ou pas',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- Dumping data for table skuadcity.phone_calls: ~0 rows (approximately)
+
+-- Dumping structure for table skuadcity.phone_messages
+DROP TABLE IF EXISTS `phone_messages`;
+CREATE TABLE IF NOT EXISTS `phone_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `transmitter` varchar(10) NOT NULL,
+  `receiver` varchar(10) NOT NULL,
+  `message` varchar(255) NOT NULL DEFAULT '0',
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `isRead` int(11) NOT NULL DEFAULT 0,
+  `owner` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=106 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- Dumping data for table skuadcity.phone_messages: 0 rows
+/*!40000 ALTER TABLE `phone_messages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `phone_messages` ENABLE KEYS */;
+
+-- Dumping structure for table skuadcity.phone_users_contacts
+DROP TABLE IF EXISTS `phone_users_contacts`;
+CREATE TABLE IF NOT EXISTS `phone_users_contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `number` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `display` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '-1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- Dumping data for table skuadcity.phone_users_contacts: 0 rows
+/*!40000 ALTER TABLE `phone_users_contacts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `phone_users_contacts` ENABLE KEYS */;
+
 -- Dumping structure for table skuadcity.properties
+DROP TABLE IF EXISTS `properties`;
 CREATE TABLE IF NOT EXISTS `properties` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -462,7 +540,7 @@ CREATE TABLE IF NOT EXISTS `properties` (
 ) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.properties: ~72 rows (approximately)
-INSERT IGNORE INTO `properties` (`id`, `name`, `label`, `entering`, `exit`, `inside`, `outside`, `ipls`, `gateway`, `is_single`, `is_room`, `is_gateway`, `room_menu`, `price`) VALUES
+REPLACE INTO `properties` (`id`, `name`, `label`, `entering`, `exit`, `inside`, `outside`, `ipls`, `gateway`, `is_single`, `is_room`, `is_gateway`, `room_menu`, `price`) VALUES
 	(1, 'WhispymoundDrive', '2677 Whispymound Drive', '{"y":564.89,"z":182.959,"x":119.384}', '{"x":117.347,"y":559.506,"z":183.304}', '{"y":557.032,"z":183.301,"x":118.037}', '{"y":567.798,"z":182.131,"x":119.249}', '[]', NULL, 1, 1, 0, '{"x":118.748,"y":566.573,"z":175.697}', 1500000),
 	(2, 'NorthConkerAvenue2045', '2045 North Conker Avenue', '{"x":372.796,"y":428.327,"z":144.685}', '{"x":373.548,"y":422.982,"z":144.907}', '{"y":420.075,"z":145.904,"x":372.161}', '{"x":372.454,"y":432.886,"z":143.443}', '[]', NULL, 1, 1, 0, '{"x":377.349,"y":429.422,"z":137.3}', 1500000),
 	(3, 'RichardMajesticApt2', 'Richard Majestic, Apt 2', '{"y":-379.165,"z":37.961,"x":-936.363}', '{"y":-365.476,"z":113.274,"x":-913.097}', '{"y":-367.637,"z":113.274,"x":-918.022}', '{"y":-382.023,"z":37.961,"x":-943.626}', '[]', NULL, 1, 1, 0, '{"x":-927.554,"y":-377.744,"z":112.674}', 1700000),
@@ -537,6 +615,7 @@ INSERT IGNORE INTO `properties` (`id`, `name`, `label`, `entering`, `exit`, `ins
 	(72, 'MBWPowerBrokerPolished', 'MBW Power Broker Polished', NULL, '{"x":-1392.74,"y":-480.18,"z":71.14}', '{"x":-1389.43,"y":-479.01,"z":71.14}', NULL, '["ex_sm_15_office_03c"]', 'MazeBankWest', 0, 1, 0, '{"x":-1390.76,"y":-479.22,"z":72.04}', 2700000);
 
 -- Dumping structure for table skuadcity.rented_vehicles
+DROP TABLE IF EXISTS `rented_vehicles`;
 CREATE TABLE IF NOT EXISTS `rented_vehicles` (
   `vehicle` varchar(60) NOT NULL,
   `plate` varchar(12) NOT NULL,
@@ -550,6 +629,7 @@ CREATE TABLE IF NOT EXISTS `rented_vehicles` (
 -- Dumping data for table skuadcity.rented_vehicles: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.shops
+DROP TABLE IF EXISTS `shops`;
 CREATE TABLE IF NOT EXISTS `shops` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `store` varchar(100) NOT NULL,
@@ -560,7 +640,7 @@ CREATE TABLE IF NOT EXISTS `shops` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.shops: ~9 rows (approximately)
-INSERT IGNORE INTO `shops` (`id`, `store`, `item`, `price`) VALUES
+REPLACE INTO `shops` (`id`, `store`, `item`, `price`) VALUES
 	(1, 'TwentyFourSeven', 'bread', 30),
 	(2, 'TwentyFourSeven', 'water', 15),
 	(3, 'RobsLiquor', 'bread', 30),
@@ -572,6 +652,7 @@ INSERT IGNORE INTO `shops` (`id`, `store`, `item`, `price`) VALUES
 	(9, 'LTDgasoline', 'beer', 45);
 
 -- Dumping structure for table skuadcity.society_moneywash
+DROP TABLE IF EXISTS `society_moneywash`;
 CREATE TABLE IF NOT EXISTS `society_moneywash` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(60) NOT NULL,
@@ -582,7 +663,52 @@ CREATE TABLE IF NOT EXISTS `society_moneywash` (
 
 -- Dumping data for table skuadcity.society_moneywash: ~0 rows (approximately)
 
+-- Dumping structure for table skuadcity.twitter_accounts
+DROP TABLE IF EXISTS `twitter_accounts`;
+CREATE TABLE IF NOT EXISTS `twitter_accounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0',
+  `password` varchar(50) NOT NULL DEFAULT '0',
+  `avatar_url` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- Dumping data for table skuadcity.twitter_accounts: ~0 rows (approximately)
+
+-- Dumping structure for table skuadcity.twitter_likes
+DROP TABLE IF EXISTS `twitter_likes`;
+CREATE TABLE IF NOT EXISTS `twitter_likes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `authorId` int(11) DEFAULT NULL,
+  `tweetId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_twitter_likes_twitter_accounts` (`authorId`),
+  KEY `FK_twitter_likes_twitter_tweets` (`tweetId`),
+  CONSTRAINT `FK_twitter_likes_twitter_accounts` FOREIGN KEY (`authorId`) REFERENCES `twitter_accounts` (`id`),
+  CONSTRAINT `FK_twitter_likes_twitter_tweets` FOREIGN KEY (`tweetId`) REFERENCES `twitter_tweets` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- Dumping data for table skuadcity.twitter_likes: ~0 rows (approximately)
+
+-- Dumping structure for table skuadcity.twitter_tweets
+DROP TABLE IF EXISTS `twitter_tweets`;
+CREATE TABLE IF NOT EXISTS `twitter_tweets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `authorId` int(11) NOT NULL,
+  `realUser` varchar(50) DEFAULT NULL,
+  `message` varchar(256) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `likes` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `FK_twitter_tweets_twitter_accounts` (`authorId`),
+  CONSTRAINT `FK_twitter_tweets_twitter_accounts` FOREIGN KEY (`authorId`) REFERENCES `twitter_accounts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table skuadcity.twitter_tweets: ~0 rows (approximately)
+
 -- Dumping structure for table skuadcity.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `identifier` varchar(40) NOT NULL,
   `name` longtext DEFAULT NULL,
@@ -612,6 +738,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table skuadcity.users: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.user_contacts
+DROP TABLE IF EXISTS `user_contacts`;
 CREATE TABLE IF NOT EXISTS `user_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(60) NOT NULL,
@@ -624,6 +751,7 @@ CREATE TABLE IF NOT EXISTS `user_contacts` (
 -- Dumping data for table skuadcity.user_contacts: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.user_licenses
+DROP TABLE IF EXISTS `user_licenses`;
 CREATE TABLE IF NOT EXISTS `user_licenses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(60) NOT NULL,
@@ -634,6 +762,7 @@ CREATE TABLE IF NOT EXISTS `user_licenses` (
 -- Dumping data for table skuadcity.user_licenses: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.user_parkings
+DROP TABLE IF EXISTS `user_parkings`;
 CREATE TABLE IF NOT EXISTS `user_parkings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(60) DEFAULT NULL,
@@ -646,6 +775,7 @@ CREATE TABLE IF NOT EXISTS `user_parkings` (
 -- Dumping data for table skuadcity.user_parkings: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.vehicles
+DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE IF NOT EXISTS `vehicles` (
   `name` varchar(60) NOT NULL,
   `model` varchar(60) NOT NULL,
@@ -655,7 +785,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.vehicles: ~240 rows (approximately)
-INSERT IGNORE INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
+REPLACE INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
 	('Adder', 'adder', 900000, 'super'),
 	('Akuma', 'AKUMA', 7500, 'motorcycles'),
 	('Alpha', 'alpha', 60000, 'sports'),
@@ -898,6 +1028,7 @@ INSERT IGNORE INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
 	('Z-Type', 'ztype', 220000, 'sportsclassics');
 
 -- Dumping structure for table skuadcity.vehicle_categories
+DROP TABLE IF EXISTS `vehicle_categories`;
 CREATE TABLE IF NOT EXISTS `vehicle_categories` (
   `name` varchar(60) NOT NULL,
   `label` varchar(60) NOT NULL,
@@ -905,7 +1036,7 @@ CREATE TABLE IF NOT EXISTS `vehicle_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.vehicle_categories: ~11 rows (approximately)
-INSERT IGNORE INTO `vehicle_categories` (`name`, `label`) VALUES
+REPLACE INTO `vehicle_categories` (`name`, `label`) VALUES
 	('compacts', 'Compacts'),
 	('coupes', 'Coupés'),
 	('motorcycles', 'Motos'),
@@ -919,6 +1050,7 @@ INSERT IGNORE INTO `vehicle_categories` (`name`, `label`) VALUES
 	('vans', 'Vans');
 
 -- Dumping structure for table skuadcity.vehicle_sold
+DROP TABLE IF EXISTS `vehicle_sold`;
 CREATE TABLE IF NOT EXISTS `vehicle_sold` (
   `client` varchar(50) NOT NULL,
   `model` varchar(50) NOT NULL,
@@ -931,6 +1063,7 @@ CREATE TABLE IF NOT EXISTS `vehicle_sold` (
 -- Dumping data for table skuadcity.vehicle_sold: ~0 rows (approximately)
 
 -- Dumping structure for table skuadcity.weashops
+DROP TABLE IF EXISTS `weashops`;
 CREATE TABLE IF NOT EXISTS `weashops` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `zone` varchar(255) NOT NULL,
@@ -940,7 +1073,7 @@ CREATE TABLE IF NOT EXISTS `weashops` (
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table skuadcity.weashops: ~40 rows (approximately)
-INSERT IGNORE INTO `weashops` (`id`, `zone`, `item`, `price`) VALUES
+REPLACE INTO `weashops` (`id`, `zone`, `item`, `price`) VALUES
 	(1, 'GunShop', 'WEAPON_PISTOL', 300),
 	(2, 'BlackWeashop', 'WEAPON_PISTOL', 500),
 	(3, 'GunShop', 'WEAPON_FLASHLIGHT', 60),
